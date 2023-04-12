@@ -1,0 +1,26 @@
+{
+    "editor.snippetSuggestions": "bottom",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "python.languageServer": "Jedi",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "fstream": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "streambuf": "cpp",
+        "thread": "cpp",
+        "cmath": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "string": "cpp"
+    }
+}
