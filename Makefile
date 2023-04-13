@@ -19,8 +19,7 @@ include_paths := src /usr/include/opencv4 \
 library_paths := /usr/lib/aarch64-linux-gnu \
                 /usr/local/cuda/lib64
 
-link_librarys := opencv_core opencv_imgproc opencv_videoio opencv_imgcodecs \
-                        nvinfer nvinfer_plugin nvonnxparser \
+link_librarys := nvinfer nvinfer_plugin \
                         cuda cublas cudart cudnn \
                         stdc++ dl
 empty         :=

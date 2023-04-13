@@ -28,7 +28,7 @@ public:
     }
 
     virtual BoxArray commit(const void *rgbptr, int width, int heigh, bool use_device) override {
-        auto objs   = yolo_->forward(yolo::Image(rgbptr, width, heigh, use_device));
+        auto objs   = yolo_->forward(yolo::Image(rgbptr, width, heigh));
         auto tracks = tracker_->update(det2tracks(objs));
         BoxArray output;
         for (size_t t = 0; t < tracks.size(); t++) {
@@ -40,11 +40,11 @@ public:
         return output;
     }
     virtual bool startup(const string &det_name) {
-        yolo_    = yolo::load(det_name, yolo::Type::V5);
-	// warm up
+        yolo_ = yolo::load(det_name, yolo::Type::V5);
+        // warm up
         unsigned char *p = new unsigned char[3 * 640 * 640];
         for (int i = 0; i < 10; ++i) {
-            yolo_->forward(yolo::Image(p, 640, 640, false));
+            yolo_->forward(yolo::Image(p, 640, 640));
         }
         delete[] p;
         tracker_ = make_shared<BYTETracker>();
@@ -62,7 +62,7 @@ private:
     shared_ptr<yolo::Infer> yolo_;
     shared_ptr<BYTETracker> tracker_;
 };
-shared_ptr<Solution> create_solution(const std::string &det_name) {
+std::shared_ptr<Solution> create_solution(const std::string &det_name) {
     shared_ptr<SolutionImpl> instance(new SolutionImpl());
     if (!instance->startup(det_name)) {
         instance.reset();
